@@ -1,24 +1,14 @@
 # esp8266_lgawhp - MQTT bridge for LG AWHP
-Bridge for 2018+ R32 LG Air/Water-Heat pumps. See https://www.lg.com/de/business/monobloc for more information on the unit.
+HomeAssistant integration for 2010+ R410A/R32 LG Air/Water-Heat pumps. 
 
 # About
-Based on the results from https://github.com/hww3/LG_Aircon_MQTT_interface
+Based on the results from https://github.com/cribskip/esp8266_lgawhp/
 
 # Hardware
 ## esp8266_lgawhp
-Same as https://github.com/hww3/LG_Aircon_MQTT_interface
-![Arduino Layout](https://github.com/ahuxtable/LG_Aircon_MQTT_interface/raw/master/Circuit_diagram_bb.png)
-![esp8266_lgawhp](https://github.com/cribskip/esp8266_lgawhp/blob/master/gallery/esp8266_lgawhp.jpg)
-
-## PENKTH000 emulator
-![PENKTH000 emulator](https://github.com/cribskip/esp8266_lgawhp/blob/master/gallery/PENKTH000%20emulator.jpg)
-![working](https://github.com/cribskip/esp8266_lgawhp/blob/master/gallery/PENKTH000%20emulator%20in%20use.jpg)
 
 # Usage
-
-# Outlook
-1. Simulate PENKTH000 to leverage power usage control
-2. Complete documentation / usage
+Compile and upload to ESP8266 device - I used D1 Mini in my setup.
 
 # LG AWHP Protocol
 ## Glossary
@@ -43,38 +33,3 @@ Abbrev | Meaning
 x0 | 22 | 02 | 08 | 00 | 19 | 00 | 00 | 14 | 2D | 00 | 17 | 11 | 26 | C0 | 00 | 06 | 40 | 00 | 2F
 SRC | MODE1 | MODE2 | MODE3 | MODE4 | **UNK** | **UNK** | **UNK** | Water_target | DHW_target | **UNK** | Water_In | Water_Out | DHW | **UNK** | **UNK** | **UNK** | **UNK** | **UNK** | ChSum
 
-### Energy monitoring
-00 | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19
---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
-C6 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 0B | B8 | 00 | 00 | 00 | 00 | D0 | 07 | 00 | 35
-SRC | **UNK** | **UNK** | **UNK** | **UNK** | **UNK** | **UNK** | **UNK** | **UNK** | **UNK** | Unit limit | Unit limit | **UNK** | **UNK** | **UNK** | **UNK** | 30010 | 30010 | **UNK** | ChSum
-
-### Unknown
-00 | 01
---- | ---
-x5 | 
-x6 | 01
-x6 | 02
-x6 | 03
-
-# LG PENKTH000 Modbus
-## General
-  - Connection without GND with Modbus wires A and B
-  - Serial parameters: 9600 baud, 8 bits of data, No parity, 2 Stopp bits (9600 8N2)
-  - Protocol is standard Modbus RTU
-
-## Tools / References
-  - https://npulse.net/en/online-modbus
-  - https://www.modbustools.com/modbus_slave.html
-  - https://www.mikrocontroller.net/topic/500056
-  - https://www.scadacore.com/tools/programming-calculators/online-hex-converter/
-  
-## Registers
-
-Register | Type / length | Content | Unit
---- | --- | --- | ---
-30010 | uint8 / 1 | energy consumption | W |
-40000 | uint32 / 2 | impulses per kWh, Connection 1 | imp/kWh |
-40002 | uint32 / 2 | impulses per kWh, Connection 2 | imp/kWh |
-40004 | uint32 / 2 | impulses per kWh, Connection 3 | imp/kWh |
-40006 | uint32 / 2 | impulses per kWh, Connection 4 | imp/kWh |
