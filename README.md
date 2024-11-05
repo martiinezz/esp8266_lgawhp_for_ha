@@ -1,4 +1,4 @@
-# esp8266_lgawhp - MQTT bridge for LG AWHP
+# esp8266_lgawhp - HA integration for LG AWHP
 HomeAssistant integration for 2010+ R410A/R32 LG Air/Water-Heat pumps. 
 
 # About
