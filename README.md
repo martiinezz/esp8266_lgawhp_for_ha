@@ -11,6 +11,9 @@ Based on the results from https://github.com/cribskip/esp8266_lgawhp/
 
 # Usage
 Compile and upload to ESP8266 device - I used D1 Mini in my setup.
+You will collect many data in HA, ex. below defrost timing:
+
+![image](https://github.com/user-attachments/assets/0440ae6b-4022-4d41-a7ab-add342e1e14f)
 
 # LG AWHP Protocol
 ## Glossary
