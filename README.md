@@ -7,6 +7,8 @@ Based on the results from https://github.com/cribskip/esp8266_lgawhp/
 # Hardware
 ## esp8266_lgawhp
 
+![image](https://github.com/user-attachments/assets/b04c963c-6921-4ad8-88f0-d8e3aaffe302)
+
 # Usage
 Compile and upload to ESP8266 device - I used D1 Mini in my setup.
 
