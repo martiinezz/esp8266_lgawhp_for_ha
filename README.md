@@ -12,7 +12,7 @@ Maybe trying to emulate LCD panel as secondary slave device
 
 ![image](https://github.com/user-attachments/assets/b04c963c-6921-4ad8-88f0-d8e3aaffe302)
 
-Let me know if you want to buy PCB as I have some spare ones.
+I do have some spare PCBs to sell in case you need one.
 
 # Usage
 Compile and upload to ESP8266 device - I used D1 Mini in my setup.
