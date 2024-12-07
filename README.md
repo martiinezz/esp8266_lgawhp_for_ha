@@ -1,8 +1,11 @@
 # esp8266_lgawhp - HA integration for LG AWHP
-HomeAssistant integration for 2010+ R410A/R32 LG Air/Water-Heat pumps. 
+HomeAssistant integration for older LG ThermaV (ThermaV) 2010+ R410A/R32 Air/Water-Heat pumps.
 
 # About
 Based on the results from https://github.com/cribskip/esp8266_lgawhp/
+
+# TODO
+Maybe trying to emulate LCD panel as secondary slave device
 
 # Hardware
 ## esp8266_lgawhp
