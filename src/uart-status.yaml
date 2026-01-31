@@ -1,9 +1,26 @@
 esphome:
   name: lg-status
-  platform: ESP8266
-  board: d1_mini
   includes:
     - uart-sensor.h
+  on_boot:
+    priority: 250
+    then:
+      - lambda: |-
+          auto uart_sensor = new UARTHexSensor(id(uart_bus));
+          uart_sensor->power_state_sensor = id(power_state);
+          uart_sensor->operation_mode_sensor = id(operation_mode);
+          uart_sensor->outdoor_unit_sensor = id(outdoor_unit);
+          uart_sensor->water_pump_sensor = id(water_pump);
+          uart_sensor->silent_mode_sensor = id(silent_mode);
+          uart_sensor->inlet_temp_sensor = id(inlet_temp);
+          uart_sensor->outlet_temp_sensor = id(outlet_temp);
+          uart_sensor->indoor_temp_sensor = id(indoor_temp);
+          uart_sensor->set_temp_sensor = id(set_temp);
+          App.register_component(uart_sensor);
+          uart_sensor->setup();
+
+esp8266:
+  board: d1_mini
 
 # Enable logging
 logger:
@@ -96,18 +113,4 @@ sensor:
     unit_of_measurement: "°C"
     accuracy_decimals: 0
 
-# Modify your custom component to pass the sensors
-custom_component:
-  - lambda: |-
-      auto uart_sensor = new UARTHexSensor(id(uart_bus));
-      // Assign sensors to the custom component
-      uart_sensor->power_state_sensor = id(power_state);
-      uart_sensor->operation_mode_sensor = id(operation_mode);
-      uart_sensor->outdoor_unit_sensor = id(outdoor_unit);
-      uart_sensor->water_pump_sensor = id(water_pump);
-      uart_sensor->silent_mode_sensor = id(silent_mode);
-      uart_sensor->inlet_temp_sensor = id(inlet_temp);
-      uart_sensor->outlet_temp_sensor = id(outlet_temp);
-      uart_sensor->indoor_temp_sensor = id(indoor_temp);
-      uart_sensor->set_temp_sensor = id(set_temp);
-      return {uart_sensor};
+
